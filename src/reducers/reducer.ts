@@ -1,4 +1,4 @@
-import { ADD_NEW_LIST, ADD_NEW_TASK, CHANGE_TITLE, DELETE_LIST, DELETE_TASK, EDIT_TASK_NAME } from "../actions/types"
+import { ADD_NEW_LIST, ADD_NEW_TASK, CHANGE_TITLE, DELETE_LIST, DELETE_TASK, DRAG_DROP, EDIT_TASK_NAME } from "../actions/types"
 
 interface ListProps {
     title: string
@@ -89,6 +89,29 @@ export const reducer = (state = initialState, action: any) => {
             list.forEach((item: any) => {
                 if (item.id === action.payload.id) {
                     item.title = action.payload.newTitle
+                }
+            })
+            return {
+                list
+            }
+        }
+        case DRAG_DROP: {
+            let list = [...state.list]
+            list.forEach((item: any) => {
+                if (item.id === action.payload.removeBoardId) {
+                    let newTaskList = [...item.taskList]
+                    const index = newTaskList.indexOf(action.payload.taskItem)
+                    if (index !== -1) {
+                        newTaskList.splice(index, 1)
+                        item['taskList'] = newTaskList
+                    }
+                }
+            })
+            list.forEach((item: any) => {
+                if (item.id === action.payload.addBoardId) {
+                    let newTaskList = [...item.taskList]
+                    newTaskList.push(action.payload.taskItem)
+                    item['taskList'] = newTaskList
                 }
             })
             return {

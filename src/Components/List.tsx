@@ -12,9 +12,12 @@ interface ItemProps {
 
 interface IListProps {
     item: ItemProps
+    isDragging: boolean
+    handleDragging: (dragging: boolean) => void
+    handleUpdate: (newTaskId: number, taskData: string, presentTaskId: number) => void
 }
 
-function List({ item }: IListProps) {
+function List({ item, isDragging, handleDragging, handleUpdate }: IListProps) {
     const dispatch = useDispatch()
 
     const [task, setNewTask] = useState('')
@@ -63,7 +66,13 @@ function List({ item }: IListProps) {
                 )
             }
             <div>
-                <TaskList id={item.id} task={item.taskList} />
+                <TaskList
+                    id={item.id} 
+                    task={item.taskList} 
+                    isDragging={isDragging}
+                    handleDragging={handleDragging}
+                    handleUpdate={handleUpdate}
+                />
             </div>
             <div style={{ display: 'flex', margin: '0px 20px' }}>
                 <input data-testid={`new-task-${item.title}`} value={task} placeholder='Add a new task...' type={'text'} onChange={(event) => handleAddNewTask(event)} style={{ padding: '8px', border: 'none', borderRadius: '5px' }} />

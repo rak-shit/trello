@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteTask, editTask } from '../actions/actions'
 import '../styles/list.css'
@@ -6,9 +6,10 @@ import '../styles/list.css'
 interface ITaskProps {
     taskItem: string
     id: number
+    handleDragging: (dragging: boolean) => void
 }
 
-function Task({taskItem, id}: ITaskProps) {
+function Task({taskItem, id, handleDragging}: ITaskProps) {
     const dispatch = useDispatch()
     const [edit, setEdit] = useState<boolean>(false)
     const [editTaskName, setEditTaskName] = useState<string>('')
@@ -27,11 +28,17 @@ function Task({taskItem, id}: ITaskProps) {
         dispatch(editTask(taskItem, editTaskName, id))
     }
     function handleDelete(taskItem: string) {
-        console.log('delete')
         dispatch(deleteTask(taskItem, id))
     }
+    function handleDragEnd() {
+        handleDragging(false)
+    }
+    function handleDragStart(event: React.DragEvent<HTMLDivElement>) {
+        event.dataTransfer.setData('card', `${taskItem}-${id}`)
+        handleDragging(true)
+    }
     return (
-        <div className={'list-item'}>
+        <div className={'list-item'} draggable={true} onDragEnd={handleDragEnd} onDragStart={(event) => handleDragStart(event)}>
             {
                 edit ?
                     (

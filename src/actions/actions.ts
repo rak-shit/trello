@@ -1,4 +1,4 @@
-import { ADD_NEW_LIST, ADD_NEW_TASK, CHANGE_TITLE, DELETE_LIST, DELETE_TASK, EDIT_TASK_NAME } from "./types"
+import { ADD_NEW_LIST, ADD_NEW_TASK, CHANGE_TITLE, DELETE_LIST, DELETE_TASK, DRAG_DROP, EDIT_TASK_NAME } from "./types"
 
 export const addNewList = (data: {title: string, taskList: string[], id: number}) => {
     return {
@@ -39,5 +39,12 @@ export const changeTitle = (id: number, newTitle: string) => {
     return {
         type: CHANGE_TITLE,
         payload: {id, newTitle}
+    }
+}
+
+export const dragDrop = (removeBoardId: number, addBoardId: number, taskItem: string) => {
+    return {
+        type: DRAG_DROP,
+        payload: {removeBoardId, addBoardId, taskItem}
     }
 }
