@@ -27,7 +27,7 @@ function Board() {
         setAddList(false)
     }, [list.list.length])
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', alignContent: 'flex-start' }}>
             {
                 list.list.map((item: any) => {
                     return (
