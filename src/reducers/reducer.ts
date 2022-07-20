@@ -110,7 +110,7 @@ export const reducer = (state = initialState, action: any) => {
             list.forEach((item: any) => {
                 if (item.id === action.payload.addBoardId) {
                     let newTaskList = [...item.taskList]
-                    newTaskList.push(action.payload.taskItem)
+                    newTaskList.splice(action.payload.taskId, 0, action.payload.taskItem)
                     item['taskList'] = newTaskList
                 }
             })

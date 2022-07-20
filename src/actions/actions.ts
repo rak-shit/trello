@@ -42,9 +42,9 @@ export const changeTitle = (id: number, newTitle: string) => {
     }
 }
 
-export const dragDrop = (removeBoardId: number, addBoardId: number, taskItem: string) => {
+export const dragDrop = (removeBoardId: number, addBoardId: number, taskItem: string, taskId: number) => {
     return {
         type: DRAG_DROP,
-        payload: {removeBoardId, addBoardId, taskItem}
+        payload: {removeBoardId, addBoardId, taskItem, taskId}
     }
 }

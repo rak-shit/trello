@@ -7,9 +7,11 @@ interface ITaskProps {
     taskItem: string
     id: number
     handleDragging: (dragging: boolean) => void
+    handleUpdate: (deleteBoardId: number, taskData: string, newBoardId: number, taskId: number) => void
+    taskId: number
 }
 
-function Task({taskItem, id, handleDragging}: ITaskProps) {
+function Task({taskItem, id, handleDragging, handleUpdate, taskId}: ITaskProps) {
     const dispatch = useDispatch()
     const [edit, setEdit] = useState<boolean>(false)
     const [editTaskName, setEditTaskName] = useState<string>('')
@@ -37,8 +39,23 @@ function Task({taskItem, id, handleDragging}: ITaskProps) {
         event.dataTransfer.setData('card', `${taskItem}-${id}`)
         handleDragging(true)
     }
+    function handleDragOver(event: React.DragEvent<HTMLDivElement>) {
+        event.preventDefault()
+    }
+    function handleDrop(event: React.DragEvent<HTMLDivElement>) {
+        event.preventDefault()
+        const data = event.dataTransfer.getData('card').split('-')
+        handleUpdate(Number(data[1]), data[0], id, taskId)
+        handleDragging(false)
+    }
     return (
-        <div className={'list-item'} draggable={true} onDragEnd={handleDragEnd} onDragStart={(event) => handleDragStart(event)}>
+        <div 
+            className={'list-item'} 
+            draggable={true} onDragEnd={handleDragEnd} 
+            onDragStart={(event) => handleDragStart(event)} 
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+        >
             {
                 edit ?
                     (

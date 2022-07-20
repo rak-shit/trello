@@ -17,10 +17,8 @@ function Board() {
         setIsDragging(dragging)
     }
 
-    function handleUpdate(newTaskId: number, taskData: string, presentTaskId: number) {
-        if (newTaskId !== presentTaskId) {
-            dispatch(dragDrop(newTaskId, presentTaskId, taskData))
-        }
+    function handleUpdate(deleteBoardId: number, taskData: string, newBoardId: number, taskId: number) {
+        dispatch(dragDrop(deleteBoardId, newBoardId, taskData, taskId))
     }
     
     useEffect(() => {

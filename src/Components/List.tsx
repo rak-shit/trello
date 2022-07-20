@@ -14,7 +14,7 @@ interface IListProps {
     item: ItemProps
     isDragging: boolean
     handleDragging: (dragging: boolean) => void
-    handleUpdate: (newTaskId: number, taskData: string, presentTaskId: number) => void
+    handleUpdate: (deleteBoardId: number, taskData: string, newBoardId: number, taskId: number) => void
 }
 
 function List({ item, isDragging, handleDragging, handleUpdate }: IListProps) {
