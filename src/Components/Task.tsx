@@ -31,9 +31,9 @@ function Task({taskItem, title}: any) {
                 edit ?
                     (
                         <>
-                            <input style={{ padding: '8px', border: 'none', borderRadius: '5px' }} type={'text'} value={editTaskName} onChange={(event) => handleEditTaskName(event)} />
+                            <input data-testid={`input-${taskItem}`} style={{ padding: '8px', border: 'none', borderRadius: '5px' }} type={'text'} value={editTaskName} onChange={(event) => handleEditTaskName(event)} />
                             <div className='task-action'>
-                                <button onClick={handleSave}>Save</button>
+                                <button data-testid={`save-${taskItem}`} onClick={handleSave}>Save</button>
                             </div>
                         </>
                     )
@@ -42,8 +42,8 @@ function Task({taskItem, title}: any) {
                         <>
                             <span className='task-item'>{taskItem}</span>
                             <div className='task-action'>
-                                <button className='task-item' onClick={() => handleEdit(taskItem)}>Edit</button>
-                                <button className='task-item' onClick={() => handleDelete(taskItem)}>Delete</button>
+                                <button className='task-item' data-testid={`edit-${taskItem}`} onClick={() => handleEdit(taskItem)}>Edit</button>
+                                <button className='task-item' data-testid={`${taskItem}`} onClick={() => handleDelete(taskItem)}>Delete</button>
                             </div>
                         </>
                     )

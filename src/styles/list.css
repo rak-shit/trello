@@ -1,7 +1,7 @@
 .list {
     margin: 1rem;
     background-color: #f8f8f8;
-    box-shadow: 5px 10px #e8e8e8;
+    box-shadow: 5px 10px 5px #e8e8e8;
     min-width: 300px;
     padding: 10px;
 }

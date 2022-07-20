@@ -39,12 +39,12 @@ function List({ item }: any) {
             {
                 edit ? (
                     <div className='title-edit'>
-                        <input type={'text'} value={newName} onChange={(event) => handleNameText(event)} />
-                        <button disabled={newName.length === 0} onClick={handleSaveNewTitle} className='save-title'>Save Title</button>
+                        <input data-testid={`edit-title-${item.title}`} type={'text'} value={newName} onChange={(event) => handleNameText(event)} />
+                        <button  data-testid={`save-title-${item.title}`} disabled={newName.length === 0} onClick={handleSaveNewTitle} className='save-title'>Save Title</button>
                     </div>
                 ) : (
                     <>
-                        <h3 onClick={handleNameChange}>
+                        <h3 onClick={handleNameChange} data-testId={`board-title-${item.title}`}>
                             {item.title}
                         </h3>
                     </>
@@ -54,11 +54,11 @@ function List({ item }: any) {
                 <TaskList title={item.title} task={item.taskList} />
             </div>
             <div style={{ display: 'flex', margin: '0px 20px' }}>
-                <input placeholder='Add a new task...' type={'text'} onChange={(event) => handleAddNewTask(event)} style={{ padding: '8px', border: 'none', borderRadius: '5px' }} />
-                <button style={{ marginLeft: 'auto', fontSize: '15px' }} onClick={newTask}>+</button>
+                <input data-testid={`new-task-${item.title}`} placeholder='Add a new task...' type={'text'} onChange={(event) => handleAddNewTask(event)} style={{ padding: '8px', border: 'none', borderRadius: '5px' }} />
+                <button  data-testid={`save-new-task-${item.title}`} style={{ marginLeft: 'auto', fontSize: '15px' }} onClick={newTask}>+</button>
             </div>
-            <div style={{ marginTop: 10 }}>
-                <button onClick={deleteBoard}>Delete List</button>
+            <div style={{ marginTop: 10 }} onClick={deleteBoard} data-testId={`delete-list-${item.title}`}>
+                <button>Delete List</button>
             </div>
         </div >
     )

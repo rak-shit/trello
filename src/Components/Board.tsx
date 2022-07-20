@@ -18,7 +18,7 @@ function Board() {
                 {
                     list.list.map((item: any) => {
                         return (
-                            <div>
+                            <div data-testid={`board-list-${item.title}`}>
                                 <List item={item} />
                             </div>
                         )
@@ -33,7 +33,7 @@ function Board() {
                         </div>
                     ) : (
                         <div style={{ marginLeft: 15 }}>
-                            <button style={{ fontSize: '30px', borderRadius: '50%', border: 'none', cursor: 'pointer' }} onClick={toggleAddlist}>+</button>
+                            <button style={{ fontSize: '30px', borderRadius: '50%', border: 'none', cursor: 'pointer' }} onClick={toggleAddlist} data-testId="add-list">+</button>
                         </div>
                     )
                 }
