@@ -29,6 +29,13 @@
   color: #61dafb;
 }
 
+.nav {
+  display: flex;
+  padding: 10px 20px;
+  background-color: #f0f2f2;
+  box-shadow: 5px 10px 10px #e8e8e8;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
