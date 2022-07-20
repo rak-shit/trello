@@ -1,0 +1,32 @@
+.list {
+    margin: 1rem;
+    background-color: #f8f8f8;
+    box-shadow: 5px 10px #e8e8e8;
+    min-width: 300px;
+    padding: 10px;
+}
+
+.list-item {
+    background-color: white;
+    padding: 5px;
+    margin: 10px 20px;
+    display: flex;
+    border-radius: 10px;
+}
+
+.task-item {
+    margin: 0px 5px;
+}
+
+.task-action {
+    margin-left: auto;
+}
+
+.title-edit {
+    display: flex;
+    margin: 10px 20px;
+}
+
+.save-title {
+    margin-left: auto;
+}
