@@ -13,7 +13,6 @@ function TaskList({ task, id, isDragging, handleDragging, handleUpdate }: ITaskP
             className={`layout-cards ${isDragging ? 'layout-dragging' : ''}`}
         >
             {task.map((taskItem: string, index: number) => {
-                console.log(index)
                 return (
                     <Task taskItem={taskItem} handleDragging={handleDragging} id={id} taskId={index} handleUpdate={handleUpdate} />
                 )

@@ -1,0 +1,12 @@
+.board {
+    display: flex; 
+    align-items: flex-start; 
+    align-content: flex-start;
+}
+
+.new-list {
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    font-size: 30px;
+}

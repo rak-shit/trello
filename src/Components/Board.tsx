@@ -3,6 +3,7 @@ import AddList from './AddList'
 import { useSelector, useDispatch } from 'react-redux'
 import List from './List'
 import { dragDrop } from '../actions/actions'
+import '../styles/board.css'
 
 function Board() {
     const list = useSelector((state: any) => state.listReducer)
@@ -25,7 +26,7 @@ function Board() {
         setAddList(false)
     }, [list.list.length])
     return (
-        <div style={{ display: 'flex', alignItems: 'flex-start', alignContent: 'flex-start' }}>
+        <div className={'board'}>
             {
                 list.list.map((item: any) => {
                     return (
@@ -46,7 +47,7 @@ function Board() {
                         </div>
                     ) : (
                         <div style={{ marginLeft: 15 }}>
-                            <button style={{ fontSize: '30px', borderRadius: '50%', border: 'none', cursor: 'pointer' }} onClick={toggleAddlist} data-testId="add-list">+</button>
+                            <button className={'new-list'} onClick={toggleAddlist} data-testId="add-list">+</button>
                         </div>
                     )
                 }
