@@ -40,7 +40,7 @@ function List({ item }: any) {
                 edit ? (
                     <div className='title-edit'>
                         <input type={'text'} value={newName} onChange={(event) => handleNameText(event)} />
-                        <button onClick={handleSaveNewTitle} className='save-title'>Save Title</button>
+                        <button disabled={newName.length === 0} onClick={handleSaveNewTitle} className='save-title'>Save Title</button>
                     </div>
                 ) : (
                     <>
