@@ -1,43 +1,43 @@
 import { ADD_NEW_LIST, ADD_NEW_TASK, CHANGE_TITLE, DELETE_LIST, DELETE_TASK, EDIT_TASK_NAME } from "./types"
 
-export const addNewList = (data: {title: string, taskList: string[]}) => {
+export const addNewList = (data: {title: string, taskList: string[], id: number}) => {
     return {
         type: ADD_NEW_LIST,
         payload: data
     }
 }
 
-export const addNewTask = (title: string, task: string) => {
+export const addNewTask = (id: number, task: string) => {
     return {
         type: ADD_NEW_TASK,
-        payload: {title, task}
+        payload: {id, task}
     }
 }
 
-export const editTask = (prevTask: string, newTask: string, title: string) => {
+export const editTask = (prevTask: string, newTask: string, id: number) => {
     return {
         type: EDIT_TASK_NAME,
-        payload: {prevTask, newTask, title}
+        payload: {prevTask, newTask, id}
     }
 }
 
-export const deleteTask = (taskItem: string, title: string) => {
+export const deleteTask = (taskItem: string, id: number) => {
     return {
         type: DELETE_TASK,
-        payload: {taskItem, title}
+        payload: {taskItem, id}
     }
 }
 
-export const deleteList = (title: string) => {
+export const deleteList = (id: number) => {
     return {
         type: DELETE_LIST,
-        payload: title
+        payload: id
     }
 }
 
-export const changeTitle = (prevTitle: string, newTitle: string) => {
+export const changeTitle = (id: number, newTitle: string) => {
     return {
         type: CHANGE_TITLE,
-        payload: {prevTitle, newTitle}
+        payload: {id, newTitle}
     }
 }

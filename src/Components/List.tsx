@@ -7,6 +7,7 @@ import TaskList from './TaskList'
 interface ItemProps {
     title: string
     taskList: string[]
+    id: number
 }
 
 interface IListProps {
@@ -25,11 +26,11 @@ function List({ item }: IListProps) {
 
     function newTask() {
         setNewTask('')
-        dispatch(addNewTask(item.title, task))
+        dispatch(addNewTask(item.id, task))
     }
 
     function deleteBoard() {
-        dispatch(deleteList(item.title))
+        dispatch(deleteList(item.id))
     }
 
     function handleNameChange() {
@@ -42,7 +43,7 @@ function List({ item }: IListProps) {
 
     function handleSaveNewTitle() {
         setEdit(false)
-        dispatch(changeTitle(item.title, newName))
+        dispatch(changeTitle(item.id, newName))
     }
 
     return (
@@ -62,7 +63,7 @@ function List({ item }: IListProps) {
                 )
             }
             <div>
-                <TaskList title={item.title} task={item.taskList} />
+                <TaskList id={item.id} task={item.taskList} />
             </div>
             <div style={{ display: 'flex', margin: '0px 20px' }}>
                 <input data-testid={`new-task-${item.title}`} value={task} placeholder='Add a new task...' type={'text'} onChange={(event) => handleAddNewTask(event)} style={{ padding: '8px', border: 'none', borderRadius: '5px' }} />

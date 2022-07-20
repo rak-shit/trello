@@ -23,7 +23,8 @@ function AddList() {
     function saveList() {
         const dataObj = {
             title: title,
-            taskList: taskList
+            taskList: taskList,
+            id: Date.now()
         }
         dispatch(addNewList(dataObj))
         setTitle('')

@@ -5,10 +5,10 @@ import '../styles/list.css'
 
 interface ITaskProps {
     taskItem: string
-    title: string
+    id: number
 }
 
-function Task({taskItem, title}: ITaskProps) {
+function Task({taskItem, id}: ITaskProps) {
     const dispatch = useDispatch()
     const [edit, setEdit] = useState<boolean>(false)
     const [editTaskName, setEditTaskName] = useState<string>('')
@@ -24,11 +24,11 @@ function Task({taskItem, title}: ITaskProps) {
 
     function handleSave() {
         setEdit((edit) => !edit)
-        dispatch(editTask(taskItem, editTaskName, title))
+        dispatch(editTask(taskItem, editTaskName, id))
     }
     function handleDelete(taskItem: string) {
         console.log('delete')
-        dispatch(deleteTask(taskItem, title))
+        dispatch(deleteTask(taskItem, id))
     }
     return (
         <div className={'list-item'}>

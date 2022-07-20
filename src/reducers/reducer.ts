@@ -2,7 +2,8 @@ import { ADD_NEW_LIST, ADD_NEW_TASK, CHANGE_TITLE, DELETE_LIST, DELETE_TASK, EDI
 
 interface ListProps {
     title: string
-    taskList: string[]
+    taskList: string[],
+    id: number
 }
 interface IInitialStateProps {
     list: ListProps[]
@@ -12,7 +13,8 @@ const initialState: IInitialStateProps = {
     list: [
         {
             title: 'Default Name',
-            taskList: ['Task 1', 'Task 2', 'Task 3']
+            taskList: ['Task 1', 'Task 2', 'Task 3'],
+            id: Date.now()
         }
     ]
 }
@@ -27,7 +29,7 @@ export const reducer = (state = initialState, action: any) => {
         case ADD_NEW_TASK: {
             let list = [...state.list]
             list.forEach((item: any) => {
-                if (item.title === action.payload.title) {
+                if (item.id === action.payload.id) {
                     let newTaskList = [...item.taskList]
                     newTaskList.push(action.payload.task)
                     item['taskList'] = newTaskList
@@ -40,7 +42,7 @@ export const reducer = (state = initialState, action: any) => {
         case EDIT_TASK_NAME: {
             let list = [...state.list]
             list.forEach((item: any) => {
-                if (item.title === action.payload.title) {
+                if (item.id === action.payload.id) {
                     let newTaskList = [...item.taskList]
                     const index = newTaskList.indexOf(action.payload.prevTask)
                     if (index !== -1) {
@@ -56,7 +58,7 @@ export const reducer = (state = initialState, action: any) => {
         case DELETE_TASK: {
             let list = [...state.list]
             list.forEach((item: any) => {
-                if (item.title === action.payload.title) {
+                if (item.id === action.payload.id) {
                     let newTaskList = [...item.taskList]
                     const index = newTaskList.indexOf(action.payload.taskItem)
                     if (index !== -1) {
@@ -73,7 +75,7 @@ export const reducer = (state = initialState, action: any) => {
             let list = [...state.list]
             let key = 0
             list.forEach((item: any, index: number) => {
-                if (item.title === action.payload) {
+                if (item.id === action.payload) {
                     key = index
                 }
             })
@@ -84,8 +86,8 @@ export const reducer = (state = initialState, action: any) => {
         }
         case CHANGE_TITLE: {
             let list = [...state.list]
-            list.forEach((item: any, index: number) => {
-                if (item.title === action.payload.prevTitle) {
+            list.forEach((item: any) => {
+                if (item.id === action.payload.id) {
                     item.title = action.payload.newTitle
                 }
             })
