@@ -1,6 +1,6 @@
 import { ADD_NEW_LIST, ADD_NEW_TASK, CHANGE_TITLE, DELETE_LIST, DELETE_TASK, EDIT_TASK_NAME } from "./types"
 
-export const addNewList = (data: any) => {
+export const addNewList = (data: {title: string, taskList: string[]}) => {
     return {
         type: ADD_NEW_LIST,
         payload: data
