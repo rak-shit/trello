@@ -24,6 +24,7 @@ function List({ item }: IListProps) {
     }
 
     function newTask() {
+        setNewTask('')
         dispatch(addNewTask(item.title, task))
     }
 
@@ -64,7 +65,7 @@ function List({ item }: IListProps) {
                 <TaskList title={item.title} task={item.taskList} />
             </div>
             <div style={{ display: 'flex', margin: '0px 20px' }}>
-                <input data-testid={`new-task-${item.title}`} placeholder='Add a new task...' type={'text'} onChange={(event) => handleAddNewTask(event)} style={{ padding: '8px', border: 'none', borderRadius: '5px' }} />
+                <input data-testid={`new-task-${item.title}`} value={task} placeholder='Add a new task...' type={'text'} onChange={(event) => handleAddNewTask(event)} style={{ padding: '8px', border: 'none', borderRadius: '5px' }} />
                 <button  data-testid={`save-new-task-${item.title}`} style={{ marginLeft: 'auto', fontSize: '15px' }} onClick={newTask}>+</button>
             </div>
             <div style={{ marginTop: 10 }} onClick={deleteBoard} data-testId={`delete-list-${item.title}`}>
