@@ -3,7 +3,17 @@ import { useDispatch } from 'react-redux'
 import { addNewTask, changeTitle, deleteList } from '../actions/actions'
 import '../styles/list.css'
 import TaskList from './TaskList'
-function List({ item }: any) {
+
+interface ItemProps {
+    title: string
+    taskList: string[]
+}
+
+interface IListProps {
+    item: ItemProps
+}
+
+function List({ item }: IListProps) {
     const dispatch = useDispatch()
 
     const [task, setNewTask] = useState('')

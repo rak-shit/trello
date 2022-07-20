@@ -1,6 +1,14 @@
 import { ADD_NEW_LIST, ADD_NEW_TASK, CHANGE_TITLE, DELETE_LIST, DELETE_TASK, EDIT_TASK_NAME } from "../actions/types"
 
-const initialState = {
+interface ListProps {
+    title: string
+    taskList: string[]
+}
+interface IInitialStateProps {
+    list: ListProps[]
+}
+
+const initialState: IInitialStateProps = {
     list: [
         {
             title: 'Default Name',

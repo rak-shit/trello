@@ -3,7 +3,12 @@ import { useDispatch } from 'react-redux'
 import { deleteTask, editTask } from '../actions/actions'
 import '../styles/list.css'
 
-function Task({taskItem, title}: any) {
+interface ITaskProps {
+    taskItem: string
+    title: string
+}
+
+function Task({taskItem, title}: ITaskProps) {
     const dispatch = useDispatch()
     const [edit, setEdit] = useState<boolean>(false)
     const [editTaskName, setEditTaskName] = useState<string>('')

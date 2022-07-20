@@ -1,6 +1,11 @@
 import Task from './Task'
 
-function TaskList({ title, task }: any) {
+interface ITaskProps {
+    title: string
+    task: string[]
+}
+
+function TaskList({ title, task }: ITaskProps) {
     return (
         <div>
             {task.map((taskItem: string) => {

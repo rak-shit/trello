@@ -2,7 +2,16 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNewTask } from '../actions/actions'
 
-function ListItem(item: any) {
+interface ItemProps {
+    title: string
+    taskList: string[]
+}
+
+interface IListProps {
+    item: ItemProps
+}
+
+function ListItem({item}: IListProps) {
     console.log(item)
     const dispatch = useDispatch()
 

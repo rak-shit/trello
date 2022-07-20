@@ -14,17 +14,14 @@ function Board() {
     }, [list.list.length])
     return (
         <div style={{ display: 'flex' }}>
-            <div>
-                {
-                    list.list.map((item: any) => {
-                        return (
-                            <div data-testid={`board-list-${item.title}`}>
-                                <List item={item} />
-                            </div>
-                        )
-                    })
-                }
-            </div>
+            {
+                list.list.map((item: any) => {
+                    return (
+                        <List item={item} />
+
+                    )
+                })
+            }
             <div style={{ padding: '1rem 0rem' }}>
                 {
                     addList ? (
