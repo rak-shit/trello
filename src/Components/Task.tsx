@@ -51,7 +51,8 @@ function Task({taskItem, id, handleDragging, handleUpdate, taskId}: ITaskProps) 
     return (
         <div 
             className={'list-item'} 
-            draggable={true} onDragEnd={handleDragEnd} 
+            draggable={true} 
+            onDragEnd={handleDragEnd} 
             onDragStart={(event) => handleDragStart(event)} 
             onDragOver={handleDragOver}
             onDrop={handleDrop}

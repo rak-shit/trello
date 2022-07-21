@@ -48,9 +48,23 @@ function List({ item, isDragging, handleDragging, handleUpdate }: IListProps) {
         setEdit(false)
         dispatch(changeTitle(item.id, newName))
     }
+    function handleDragOver(event: React.DragEvent<HTMLDivElement>) {
+        item.taskList.length === 0 && event.preventDefault()
+    }
+    function handleDrop(event: React.DragEvent<HTMLDivElement>) {
+        if (item.taskList.length === 0) {
+            event.preventDefault()
+            const data = event.dataTransfer.getData('card').split('-')
+            handleUpdate(Number(data[1]), data[0], item.id, -1)
+        }
+    }  
 
     return (
-        <div className='list'>
+        <div 
+            className='list'
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+        >
             {
                 edit ? (
                     <div className='title-edit'>
